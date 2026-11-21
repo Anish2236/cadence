@@ -54,17 +54,7 @@ Cadence is a browser-based platform that analyzes speech disfluencies using a cu
 
 ---
 
-## Screenshots of UI
 
-| Home | Analyze |
-|:----:|:-------:|
-| ![Home](docs/screenshots/home.png) | ![Analyze](docs/screenshots/analyze.png) |
-
-| Learn | Practice | History |
-|:-----:|:--------:|:-------:|
-| ![Learn](docs/screenshots/learn.png) | ![Practice](docs/screenshots/practice.png) | ![History](docs/screenshots/history.png) |
-
----
 
 ## Key Features
 
