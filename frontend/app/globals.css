@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 98%;
+    --foreground: 0 0% 7%;
+    --card: 40 33% 99%;
+    --card-foreground: 0 0% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+    --primary: 217 91% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 7%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 7%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 217 91% 53%;
+    --radius: 0.75rem;
+
+    /* Glass design tokens */
+    --glass-bg: rgba(255, 255, 255, 0.72);
+    --glass-border: rgba(0, 0, 0, 0.06);
+    --glass-blur: 20px;
+    --glass-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 24px rgba(0, 0, 0, 0.03);
+  }
+
+  body {
+    @apply bg-[#FAF9F6] text-[#111] antialiased;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── High Contrast Mode ──────────────────────────────────────────────── */
+  .high-contrast {
+    --glass-bg: rgba(30, 30, 30, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  .high-contrast body {
+    @apply bg-black text-white;
+  }
+
+  .high-contrast .bg-white,
+  .high-contrast .bg-white\/80 {
+    background-color: #000 !important;
+  }
+
+  .high-contrast .text-gray-900,
+  .high-contrast .text-gray-800,
+  .high-contrast .text-gray-700 {
+    color: #fff !important;
+  }
+
+  .high-contrast .text-gray-600,
+  .high-contrast .text-gray-500,
+  .high-contrast .text-gray-400 {
+    color: #ccc !important;
+  }
+
+  .high-contrast .border-gray-100,
+  .high-contrast .border-gray-200,
+  .high-contrast .border-gray-200\/60 {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .high-contrast .bg-gray-50,
+  .high-contrast .bg-gray-100 {
+    background-color: #1a1a1a !important;
+  }
+
+  .high-contrast .hover\:bg-gray-50:hover {
+    background-color: #222 !important;
+  }
+
+  .high-contrast .shadow-sm,
+  .high-contrast .shadow-lg {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  .high-contrast .skeleton {
+    background: linear-gradient(90deg, #222 25%, #333 50%, #222 75%) !important;
+    background-size: 200% 100%;
+  }
+
+  .high-contrast .card,
+  .high-contrast [class*="CardContent"],
+  .high-contrast [class*="rounded-2xl"] {
+    background-color: #111 !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+  }
+
+  /* ── Large Text Mode ─────────────────────────────────────────────────── */
+  .large-text {
+    font-size: 120%;
+  }
+
+  /* ── Reduce Motion Mode ──────────────────────────────────────────────── */
+  .reduce-motion *,
+  .reduce-motion *::before,
+  .reduce-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Also respect system preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* ── Text Spacing — Relaxed ──────────────────────────────────────────── */
+  .text-spacing-relaxed {
+    letter-spacing: 0.05em;
+    word-spacing: 0.12em;
+    line-height: 1.85;
+  }
+
+  .text-spacing-relaxed p,
+  .text-spacing-relaxed span,
+  .text-spacing-relaxed li,
+  .text-spacing-relaxed td {
+    letter-spacing: 0.05em;
+    word-spacing: 0.12em;
+    line-height: 1.85;
+  }
+}
+
+@layer components {
+  /* ── Glass card ─────────────────────────────────────────────────────── */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: 16px;
+  }
+
+  .glass-subtle {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 16px;
+  }
+
+  /* ── Serif heading utility ─────────────────────────────────────────── */
+  .serif {
+    font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  }
+
+  /* ── Buttons ────────────────────────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-[#2563EB] px-6 py-2.5 text-[15px] font-semibold text-white shadow-sm hover:bg-[#1d4ed8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-gray-200 bg-white px-6 py-2.5 text-[15px] font-semibold text-gray-700 shadow-sm hover:bg-gray-50 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600;
+  }
+
+  /* ── Card (legacy fallback) ─────────────────────────────────────────── */
+  .card {
+    @apply rounded-2xl border border-gray-200/60 bg-white p-6;
+    box-shadow: var(--glass-shadow);
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium;
+  }
+
+  /* Focus ring — visible on all interactive elements */
+  .focus-ring {
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2;
+  }
+
+  /* ── Shimmer skeleton animation ─────────────────────────────────────── */
+  .skeleton {
+    @apply rounded-xl;
+    background: linear-gradient(
+      90deg,
+      #f5f5f5 25%,
+      #ececec 50%,
+      #f5f5f5 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.8s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+}
